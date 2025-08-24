@@ -1,11 +1,3 @@
-"""
-Weather Tool
-============
-Get current weather data from the Norwegian Meteorological Institute (YR API)
-"""
-
-from datetime import datetime
-
 import requests
 from agents import function_tool
 
@@ -25,11 +17,11 @@ def get_weather(lat: float, lon: float, location_name: str = None) -> str:
     print(f"🌤️ AGENTBESLUTNING: Henter værdata for {location_name or f'koordinater {lat}, {lon}'} (lat={lat}, lon={lon})")
     
     try:
-        # Round coordinates as required by YR API
+        # Avrunding av koordinater som kreves av YR API
         lat = round(float(lat), 4)
         lon = round(float(lon), 4)
         
-        # Call the YR API - using compact version for simplicity
+        # Kall YR API
         url = f"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lon}"
         headers = {"User-Agent": "WeatherAgent/1.0"}
         
@@ -37,14 +29,14 @@ def get_weather(lat: float, lon: float, location_name: str = None) -> str:
         response.raise_for_status()
         data = response.json()
         
-        # Get the first (current/closest) forecast entry
+        # Hent første (nåværende/nærmeste) forutsetning
         current_weather = data["properties"]["timeseries"][0]
         
-        # Extract basic weather info
+        # Trekk ut grunnleggende værinfo
         instant = current_weather["data"]["instant"]["details"]
         temp = instant["air_temperature"]
         
-        # Get precipitation info from next hour if available
+        # Hent nedbørinfo fra neste time hvis tilgjengelig
         precipitation_amount = 0
         precipitation_probability = 0
         

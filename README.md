@@ -1,35 +1,26 @@
-# 🇳🇴 Norsk Aktivitetsassistent - AI Agent
+# NK25 AI Agent Kurs
 
 En enkel agent som foreslår aktiviteter basert på vær og lokasjon. Viser et typisk AI-agentmønster: systemprompt + funksjonsverktøy.
 
 ## 🚀 Kom i gang
 
+### 1. Laste ned nødvendige pakker
 ```bash
 pip install -r requirements.txt
-export AZURE_OPENAI_API_KEY="din-azure-api-nøkkel"
-export AZURE_OPENAI_ENDPOINT="https://din-ressurs.openai.azure.com/"
-export AZURE_DEPLOYMENT_NAME="din-modell-deployment-navn"
-python agent.py
 ```
-
-Tillegg for verktøy:
-
-- `FOURSQUARE_API_KEY` for aktivitetsøk.
-
-## 📁 Filstruktur
-
-- `agent.py` – Kjør agenten (Azure OpenAI via Agents SDK)
-- `prompt.py` – Systemprompt og atferdsregler
-- `config.py` – Konfig for Azure OpenAI
-- `tools/` – Verktøy: `location_tool.py`, `weather_tool.py`, `activities_tool.py`, `__init__.py`
-- `weather_category_tool.py` – Kategori-IDer for innendørs/utendørs/sport
-
-## 🔧 Kontrakter (funksjonssignaturer)
-
-- `search_location(city_name: str) -> str`
-- `get_weather(lat: float, lon: float, location_name: str | None = None, time_iso: str | None = None) -> str`
-- `get_foursquare_categories() -> str`
-- `get_activities(lat: float, lon: float, query: str = "things to do", categories: str | None = None, limit: int = 5) -> str`
+eller
+```bash
+pip3 install -r requirements.txt
+```
+### 2. Sette opp miljøvariabler
+1. Lag en fil som heter `.env` i roten av prosjektet
+2. Sett opp følgende miljøvariabler
+```
+AZURE_OPENAI_API_KEY=denne får dere av meg på kurset
+AZURE_OPENAI_ENDPOINT=https://nk-kurs-service.cognitiveservices.azure.com/
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
+AZURE_DEPLOYMENT_NAME=gpt-4.1-mini
+```
 
 ## 💬 Eksempel
 
@@ -41,5 +32,3 @@ Tillegg for verktøy:
 📞 get_activities(lat, lon, categories="...")
 💬 ...
 ```
-
-_Kort, modulært, lett å forstå_ 🎯

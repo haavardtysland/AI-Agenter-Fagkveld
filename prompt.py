@@ -1,10 +1,3 @@
-"""
-Prompt Engineering
-==================
-This file contains the system prompt that defines the AI agent's personality and behavior.
-This is the foundation of any AI agent.
-"""
-
 from datetime import datetime
 
 

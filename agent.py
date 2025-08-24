@@ -1,12 +1,6 @@
-"""
-Minimal Weather Agent Demo - OpenAI Agents SDK Version
-=====================================================
-Shows the new OpenAI Agents SDK in action with Azure OpenAI.
-"""
 
 import asyncio
 
-from agent_trace import get_trace, start_run
 from agents import Agent, OpenAIChatCompletionsModel, Runner, set_tracing_disabled
 from openai import AsyncAzureOpenAI, OpenAIError
 
@@ -22,22 +16,22 @@ from tools import (
 # Setup
 Config.validate()
 
-# Disable tracing since we're using Azure OpenAI
+# Slå av sporingsfunksjonalitet siden vi bruker Azure OpenAI
 set_tracing_disabled(disabled=True)
 
 async def create_agent():
-    """Create the agent with Azure OpenAI configuration"""
+    """Lag agenten med Azure OpenAI konfigurasjon"""
     try:
-        # Create the Async Azure OpenAI client
+        # Opprett Async Azure OpenAI klient
         client = AsyncAzureOpenAI(
             api_key=Config.AZURE_OPENAI_API_KEY,
             api_version=Config.AZURE_OPENAI_API_VERSION,
             azure_endpoint=Config.AZURE_OPENAI_ENDPOINT
         )
 
-        # Configure the agent with Azure OpenAI
+        # Konfigurer agenten med Azure OpenAI
         agent = Agent(
-            name="NorskAktivitetsAssistent",
+            name="NK25_AI_Agent_Kurs",
             instructions=get_system_prompt(),
             tools=[search_location, get_weather, get_activities, get_foursquare_categories],
             model=OpenAIChatCompletionsModel(
@@ -70,7 +64,7 @@ async def run_agent():
         try:
             user_input = input("Du: ").strip()
             
-            if user_input.lower() in ['exit', 'quit', 'bye', 'ha det']:
+            if user_input.lower() in ['q','exit', 'quit', 'bye', 'ha det']:
                 print("👋 Ha det!")
                 break
             
@@ -80,23 +74,12 @@ async def run_agent():
             print("\n🤖 Assistent:")
             print(f"📝 BRUKER: '{user_input}'")
             print("🧠 AGENTEN TENKER: Analyserer forespørsel og planlegger verktøybruk...")
-            start_run()
             
-            # Run the agent with the user's input
+            # Kjør agenten med brukerens input
             result = await Runner.run(agent, user_input)
             print("💬 ENDELIG SVAR:")
             print(result.final_output)
-            # Vis kort spor om ønskelig
-            trace = get_trace()
-            if trace:
-                print("\n🧾 Kort verktøyspor:")
-                for i, event in enumerate(trace, start=1):
-                    etype = event.get("type")
-                    tool = event.get("payload", {}).get("tool")
-                    summary = {k: v for k, v in event.get("payload", {}).items() if k != "tool"}
-                    print(f"  {i}. {etype} – {tool}: {summary}")
-            print()
-            
+
         except KeyboardInterrupt:
             print("\n👋 Ha det!")
             break
@@ -105,7 +88,6 @@ async def run_agent():
             print("Prøv igjen eller skriv 'exit' for å avslutte.\n")
 
 def main():
-    """Main entry point"""
     asyncio.run(run_agent())
 
 if __name__ == "__main__":

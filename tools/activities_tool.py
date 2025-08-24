@@ -1,9 +1,3 @@
-"""
-Activities Tool
-===============
-Get activity suggestions for given coordinates.
-"""
-
 import os
 
 import requests
