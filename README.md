@@ -4,15 +4,14 @@ En enkel agent som foreslår aktiviteter basert på vær og lokasjon. Viser et t
 
 ## 🚀 Kom i gang
 
-### 1. Laste ned nødvendige pakker
-```bash
-pip install -r requirements.txt
-```
-eller
-```bash
-pip3 install -r requirements.txt
-```
-### 2. Sette opp miljøvariabler
+#### 1. Klon ned prosjektet
+
+`git clone https://github.com/haavardtysland/NK25-AI-Agent-Kurs.git`
+
+#### 2. Laste ned nødvendige pakker
+Skriv `pip install -r requirements.txt` i terminalen
+
+#### 3. Sette opp miljøvariabler
 1. Lag en fil som heter `.env` i roten av prosjektet
 2. Sett opp følgende miljøvariabler
 ```
@@ -22,13 +21,17 @@ AZURE_OPENAI_API_VERSION=2024-12-01-preview
 AZURE_DEPLOYMENT_NAME=gpt-4.1-mini
 ```
 
-## 💬 Eksempel
+#### 4. Kjøre agenten
 
-```
-📝 'Aktiviteter i Tromsø kl 17:00?'
-📞 search_location → Tromsø
-📞 get_weather(lat, lon, location_name="Tromsø", time_iso="2025-06-13T15:00:00Z")
-📞 get_foursquare_categories()
-📞 get_activities(lat, lon, categories="...")
-💬 ...
-```
+1. Skriv `python agent.py` i terminalen
+2. Spør "Hvem er favorittpersonen din?" 
+
+## Oppgaver
+
+### 1.
+
+### 2.
+
+### 3. 
+
+### 4.

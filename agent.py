@@ -3,15 +3,10 @@ import asyncio
 
 from agents import Agent, OpenAIChatCompletionsModel, Runner, set_tracing_disabled
 from openai import AsyncAzureOpenAI, OpenAIError
+from tools import get_favorite_person
 
 from config import Config
 from prompt import get_system_prompt
-from tools import (
-    get_activities,
-    get_foursquare_categories,
-    get_weather,
-    search_location,
-)
 
 # Setup
 Config.validate()
@@ -33,7 +28,7 @@ async def create_agent():
         agent = Agent(
             name="NK25_AI_Agent_Kurs",
             instructions=get_system_prompt(),
-            tools=[search_location, get_weather, get_activities, get_foursquare_categories],
+            tools=[get_favorite_person],
             model=OpenAIChatCompletionsModel(
                 model=Config.AZURE_DEPLOYMENT_NAME,
                 openai_client=client,
@@ -50,9 +45,8 @@ async def create_agent():
         return None
 
 async def run_agent():
-    """Run the weather agent"""
-    print("🤖 Norsk Aktivitetsassistent er klar!")
-    print("Spør meg om aktiviteter i en by, f.eks: 'Aktiviteter i Oslo kl 17:00?'")
+    print("🤖 Agenten er klar!")
+    print("Hva kan jeg hjelpe deg med? Du kan for eksempel spørre om favorittpersonen din.'")
     print("Skriv 'exit' for å avslutte.\n")
     
     agent = await create_agent()
