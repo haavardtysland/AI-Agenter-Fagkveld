@@ -48,7 +48,7 @@ Vi skal bruke dette gratis API-et for hele oppgaven: `https://www.thecocktaildb.
 
 1. Gå tilbake til master branch ved å skrive `git checkout master`.
 2. Lag en ny branch for oppgave 2.
-3. Lag et nytt function tool som lister alle tilgjengelige ingredienser på API-et. Bruk dette endepunktet: `www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
+3. Lag et nytt function tool som gi agentent tilgang til alle ingredienser på API-et. Bruk dette endepunktet: `www.thecocktaildb.com/api/json/v1/1/list.php?i=list`. 
 4. Få agenten til å gjøre alle ingredienser om til snake_case. Det vil da for eksempel si at `Light Rum` blir til `light_rum`. Hint: Gjør endringer i system promptet.
 5. Lag et nytt function tool agenten kan bruke til å hente oppskrifter på hver cocktail. Bruk dette endepunktet: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={ingredient}`
 6. Få agenten til å foreslå de ulike oppskriftene slik at du kan svare hvilken du vil ha.
