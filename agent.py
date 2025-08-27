@@ -1,7 +1,7 @@
 
 import asyncio
 
-from agents import Agent, OpenAIChatCompletionsModel, Runner, set_tracing_disabled
+from agents import Agent, OpenAIChatCompletionsModel, Runner, set_tracing_disabled, SQLiteSession
 from openai import AsyncAzureOpenAI, OpenAIError
 from tools import get_favorite_person
 
@@ -54,6 +54,8 @@ async def run_agent():
         print("❌ Kunne ikke opprette agent. Sjekk konfigurasjonen.")
         return
 
+    session = SQLiteSession("agent_session")
+
     while True:
         try:
             user_input = input("Du: ").strip()
@@ -70,7 +72,7 @@ async def run_agent():
             print("🧠 AGENTEN TENKER: Analyserer forespørsel og planlegger verktøybruk...")
             
             # Kjør agenten med brukerens input
-            result = await Runner.run(agent, user_input)
+            result = await Runner.run(agent, user_input, session=session)
             print("💬 ENDELIG SVAR:")
             print(result.final_output)
 
