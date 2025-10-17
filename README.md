@@ -1,4 +1,4 @@
-# NK25 AI Agent Kurs
+# AI Agenter Fagkveld
 
 En enkel agent ved bruk av function tools. Viser et typisk AI-agentmønster: systemprompt + funksjonsverktøy.
 
@@ -18,10 +18,10 @@ Skriv `pip install -r requirements.txt` i terminalen
 2. Sett opp følgende miljøvariabler
 
 ```
-AZURE_OPENAI_API_KEY=denne får dere av meg på kurset
-AZURE_OPENAI_ENDPOINT=https://nk-kurs-service.cognitiveservices.azure.com/
+AZURE_OPENAI_API_KEY={Deles på fagkveld}
+AZURE_OPENAI_ENDPOINT=https://fagkveld-foundry.cognitiveservices.azure.com/
 AZURE_OPENAI_API_VERSION=2024-12-01-preview
-AZURE_DEPLOYMENT_NAME=gpt-4.1-mini
+AZURE_DEPLOYMENT_NAME=gpt-4o
 ```
 
 #### 4. Kjøre agenten
