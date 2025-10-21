@@ -4,6 +4,12 @@ En enkel agent ved bruk av function tools. Viser et typisk AI-agentmønster: sys
 
 ## 🚀 Kom i gang
 
+#### (Valgfri: lag et python environment)
+
+For å unngå å clustere den globale konfigurasjonen kan man lage et environment ved å gjøre følgende:
+Lag ved å skrive:
+`python -m venv ai_agent_env`, og aktiver med: `source ai_agent_env/bin/activate`
+
 #### 1. Klon ned prosjektet
 
 `git clone https://github.com/haavardtysland/NK25-AI-Agent-Kurs.git`
@@ -62,8 +68,9 @@ Vi skal bruke dette gratis API-et for hele oppgaven: `https://www.thecocktaildb.
 Denne oppgaven går ut på å få en agent til å planlegge hva den skal gjøre før den starter å gjøre det. Til å løse oppgaven trenger du en agent med noen tools tilgjengelig. Har kan du bruke agenten fra en av de andre oppgavene, eller en annen agent du har laget.
 
 1. Endre systempromptet slik at agenten alltid skal:
-    - Først skrive en plan (kort, nummerert).
-    - Deretter utføre planen og svare.
+
+   - Først skrive en plan (kort, nummerert).
+   - Deretter utføre planen og svare.
 
 2. Test med spørsmål som krever flere steg, for eksempel: “Finn en cocktail med gin, sjekk om jeg har ingrediensene, og si hva jeg må handle.”
 
@@ -71,13 +78,13 @@ Agenten skal da først skrive noe som:
 
 ```md
 Plan:
+
 1. Finne cocktail med gin.
 2. Sammenligne ingredienser.
 3. Liste opp manglende.
 ```
 
 og deretter utføre stegene.
-
 
 3. Utfordring: Lag et lite verktøy som printer ressoneringen i terminalen før agenten svarer, så man ser hvordan agenten tenker.
 
@@ -111,14 +118,15 @@ I denne oppgaven skal vi utvide agentens verktøykasse ved å koble til en MCP-s
 
 1. Vi bruker github sin MCP-server. Lag en token i github ved å gå til https://github.com/settings/personal-access-tokens
 2. Fyll inn følgende i koden for å aktivere agentens MCP-egenskaper:
+
 ```py
   github_mcp = MCPServerStreamableHttp({
             "url": "https://api.githubcopilot.com/mcp/",
             "headers": {"Authorization": f"Bearer {DIN_GITHUB_TOKEN}"}
             })
-        
+
         await github_mcp.connect()
-    
+
         agent = Agent(
             name="NK25_AI_Agent_Kurs",
             instructions=get_system_prompt(),
@@ -130,9 +138,19 @@ I denne oppgaven skal vi utvide agentens verktøykasse ved å koble til en MCP-s
             )
         )
 ```
+
 3. Få agenten til å liste opp tilgjengelige verktøy
 4. Bruk verktøyene. Du kan for eksempel spørre hvilke repoer som inneholder Java-kode.
 
+### Lag en agent fra scratch
+
+I denne oppgaven lager du en minimal agent uten rammeverk – kun med et par kjernefunksjoner og et bittelite “minne”. Målet er å forstå agent-sløyfen: tenk → sjekk tool → utfør → vurder → evt. fortsett.
+
+1. Lag et minimalt “minne” Bruk en liste context = [] for samtaleloggen (prompt + svar). Legg inn max-lengde (f.eks. siste 6 meldinger) for å unngå at den blir for stor.
+2. Implementer call_llm(prompt: str) -> str
+3. Implementer noen grunn-komponenter som, som think(), check_for_tool(), og evaluate() og execute(), trenger ikke alle med en gang.
+4. Få agenten til å kalle på en funksjon via naturlig språk fra en bruker.
+5. Prøv å få agenten til å få tilgang til svaret på funksjonskallet, prøv å få den til å tenke videre, osv.
 
 ### Kreativ frihet
 
