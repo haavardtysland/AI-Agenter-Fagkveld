@@ -112,7 +112,7 @@ I denne oppgaven skal vi utvide agentens verktøykasse ved å koble til en MCP-s
 1. Vi bruker github sin MCP-server. Lag en token i github ved å ...
 2. Fyll inn følgende i koden for å aktivere agentens MCP-egenskaper:
 ```py
-[kode her]
+[relevant kode her]
 ```
 3. Få agenten til å liste opp tilgjengelige verktøy
 4. Bruk verktøyene. Du kan for eksempel spørre hvilke repoer som inneholder Java-kode.
