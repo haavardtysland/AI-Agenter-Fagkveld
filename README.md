@@ -109,15 +109,31 @@ Oppgaven krever også at man lager noen enkle .txt-filer i prosjektmappen.
 
 I denne oppgaven skal vi utvide agentens verktøykasse ved å koble til en MCP-server. Dermed kan agenten bruke tools utenfor vår egen kode.
 
-1. Vi bruker github sin MCP-server. Lag en token i github ved å ...
+1. Vi bruker github sin MCP-server. Lag en token i github ved å gå til https://github.com/settings/personal-access-tokens
 2. Fyll inn følgende i koden for å aktivere agentens MCP-egenskaper:
 ```py
-[relevant kode her]
+  github_mcp = MCPServerStreamableHttp({
+            "url": "https://api.githubcopilot.com/mcp/",
+            "headers": {"Authorization": f"Bearer {DIN_GITHUB_TOKEN}"}
+            })
+        
+        await github_mcp.connect()
+    
+        agent = Agent(
+            name="NK25_AI_Agent_Kurs",
+            instructions=get_system_prompt(),
+            mcp_servers=[github_mcp],
+            tools=[get_favorite_person],
+            model=OpenAIChatCompletionsModel(
+                model=Config.AZURE_DEPLOYMENT_NAME,
+                openai_client=client,
+            )
+        )
 ```
 3. Få agenten til å liste opp tilgjengelige verktøy
 4. Bruk verktøyene. Du kan for eksempel spørre hvilke repoer som inneholder Java-kode.
 
 
-### 7. Kreativ frihet
+### Kreativ frihet
 
-Velg et gratis API og lag en kul agent utifra det 😎 Her kan du også finne en MCP-server for å gi agenten ekstra funksjonalitet!
+Velg et API og lag en kul agent utifra det 😎 Her kan du også finne en MCP-server for å gi agenten ekstra funksjonalitet!
