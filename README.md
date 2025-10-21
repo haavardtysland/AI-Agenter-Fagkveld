@@ -32,7 +32,7 @@ AZURE_DEPLOYMENT_NAME=gpt-4o
 
 ## Oppgaver
 
-### 1. Bli kjent med oppsettet
+### Bli kjent med oppsettet
 
 1.  Lag en ny branch ved å skrive `git checkout -b oppgave-1`
 2.  Gjør det slik at agenten kun svarer på spørsmål om favorittpersonen sin. Hint: Gjør endringer i system promptet.
@@ -41,7 +41,7 @@ AZURE_DEPLOYMENT_NAME=gpt-4o
 5.  Hmm.. disse vitsene funket ikke like bra på norsk. Få agenten til å gi de på originalspråket.
 6.  Commit endringene dine i branchen ved å skrive `git add .` og `git commit -m "oppgave 1 var veldig gøy"`.
 
-### 2. Cocktailplanlegger
+### Cocktailplanlegger
 
 I denne oppgaven skal vi lage en agent som kan hjelpe deg med å finne oppskrift på en cocktail basert på ingredienser du har i kjøleskapet.
 
@@ -57,7 +57,7 @@ Vi skal bruke dette gratis API-et for hele oppgaven: `https://www.thecocktaildb.
 8. Få agenten til å gi handleliste på ingredienser som mangler, i tillegg til fremgangsmåte på hvordan man lager cocktailen.
 9. Commit endringene dine i branchen.
 
-### 3. Planleggeragenten
+### Planleggeragenten
 
 Denne oppgaven går ut på å få en agent til å planlegge hva den skal gjøre før den starter å gjøre det. Til å løse oppgaven trenger du en agent med noen tools tilgjengelig. Har kan du bruke agenten fra en av de andre oppgavene, eller en annen agent du har laget.
 
@@ -81,7 +81,7 @@ og deretter utføre stegene.
 
 3. Utfordring: Lag et lite verktøy som printer ressoneringen i terminalen før agenten svarer, så man ser hvordan agenten tenker.
 
-### 4. Agent med personlighet
+### Agent med personlighet
 
 Denne oppgaven går ut på å gi agenten forskjellige personligheter, og få agenten til å kunne endre personlighet dynamisk
 
@@ -89,7 +89,7 @@ Denne oppgaven går ut på å gi agenten forskjellige personligheter, og få age
 2. I systempromptet, gi beskjed om å svare med den tonen som mode beskriver.
 3. La brukeren endre modus midt i samtalen ved å skrive for eksempel modus: sarkastisk.
 
-### 5. Filagenten
+### Filagenten
 
 I denne oppgaven skal vi simulere en databasetilkobling ved å bruke lokale filer på PC'en.
 Oppgaven krever også at man lager noen enkle .txt-filer i prosjektmappen.
@@ -105,7 +105,7 @@ Oppgaven krever også at man lager noen enkle .txt-filer i prosjektmappen.
 
 4. Få agenten til å oppsummere innholdet i filer, i stedet for å skrive alt
 
-### 6. MCP
+### MCP
 
 I denne oppgaven skal vi utvide agentens verktøykasse ved å koble til en MCP-server. Dermed kan agenten bruke tools utenfor vår egen kode.
 
